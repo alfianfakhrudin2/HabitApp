@@ -37,7 +37,7 @@ class NotificationWorker(val ctx: Context, params: WorkerParameters) : Worker(ct
         return Result.success()
     }
 
-    fun showAlarmNotification(context: Context, id: Int, habit: String){
+    fun showAlarmNotification(context: Context, id: Int, title: String) {
         val intent = Intent(context, DetailHabitActivity::class.java).apply {
             putExtra(HABIT_ID, id)
         }

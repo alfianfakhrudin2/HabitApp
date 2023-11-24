@@ -13,21 +13,28 @@ import androidx.recyclerview.widget.RecyclerView
 import androidx.recyclerview.widget.StaggeredGridLayoutManager
 import com.dicoding.habitapp.R
 import com.dicoding.habitapp.data.Habit
+import com.dicoding.habitapp.setting.SettingsActivity
 import com.dicoding.habitapp.ui.ViewModelFactory
 import com.dicoding.habitapp.ui.add.AddHabitActivity
 import com.dicoding.habitapp.ui.detail.DetailHabitActivity
+import com.dicoding.habitapp.ui.random.RandomHabitActivity
 import com.dicoding.habitapp.utils.Event
 import com.dicoding.habitapp.utils.HABIT_ID
 import com.dicoding.habitapp.utils.HabitSortType
 import com.google.android.material.floatingactionbutton.FloatingActionButton
 import com.google.android.material.snackbar.Snackbar
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.async
+import kotlinx.coroutines.runBlocking
 
 class HabitListActivity : AppCompatActivity() {
 
     private lateinit var recycler: RecyclerView
     private lateinit var viewModel: HabitListViewModel
     private lateinit var habitAdapter: HabitAdapter
-
+    private val myAdapter: HabitAdapter by lazy {
+        HabitAdapter(::onListItemClick)
+    }
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_habit_list)
@@ -71,13 +78,29 @@ class HabitListActivity : AppCompatActivity() {
     }
 
     override fun onCreateOptionsMenu(menu: Menu): Boolean {
+        menuInflater.inflate(R.menu.menu_main, menu)
         return true
     }
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
-        return true
+        return when (item.itemId){
+            R.id.action_settings -> {
+                val settingIntent = Intent(this, SettingsActivity::class.java)
+                startActivity(settingIntent)
+                true
+            }
+            R.id.action_sort -> {
+                showSortingPopUpMenu()
+                true
+            }
+            R.id.action_random -> {
+                val randomImtent = Intent(this, RandomHabitActivity::class.java)
+                startActivity(randomImtent)
+                true
+            }
+            else -> super.onOptionsItemSelected(item)
+        }
     }
-
     private fun showSortingPopUpMenu() {
         val view = findViewById<View>(R.id.action_sort) ?: return
         PopupMenu(this, view).run {
@@ -117,9 +140,16 @@ class HabitListActivity : AppCompatActivity() {
             override fun onSwiped(viewHolder: RecyclerView.ViewHolder, direction: Int) {
                 val habit = (viewHolder as HabitAdapter.HabitViewHolder).getHabit
                 viewModel.deleteHabit(habit)
+                showSnackBar(Event(R.string.habit_deleted))
             }
 
         })
         itemTouchHelper.attachToRecyclerView(recycler)
+    }
+
+    fun onListItemClick(item: Habit){
+        val intent = Intent(baseContext, DetailHabitActivity::class.java)
+        intent.putExtra(HABIT_ID, item.id)
+        startActivity(intent)
     }
 }

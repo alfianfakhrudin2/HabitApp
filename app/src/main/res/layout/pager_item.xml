@@ -62,7 +62,7 @@
             android:textColor="@color/white"
             android:textAppearance="@style/TextAppearance.MaterialComponents.Subtitle2"
             android:textStyle="bold"
-            android:text="20"
+            tools:text="20"
             app:layout_constraintBottom_toBottomOf="@+id/pager_priority_level"
             app:layout_constraintEnd_toEndOf="@+id/pager_priority_level"
             app:layout_constraintStart_toStartOf="@+id/pager_priority_level"
