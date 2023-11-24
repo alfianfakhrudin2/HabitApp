@@ -14,7 +14,87 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent">
         
+        <TextView
+            android:id="@+id/pager_tv_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="36sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            android:textAppearance="@style/TextAppearance.MaterialComponents.Subtitle1"
+            android:layout_margin="16dp"
+            android:gravity="center"
+            tools:text="@string/title_hint"
+            app:layout_constraintVertical_bias="1.0"
+            app:layout_constraintBottom_toTopOf="@+id/pager_tv_start_time"
+            />
 
+        <TextView
+            android:id="@+id/pager_tv_start_time"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="fill_vertical"
+            android:textSize="30sp"
+            app:layout_constraintBottom_toTopOf="@+id/pager_priority_level"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            android:textAppearance="@style/TextAppearance.MaterialComponents.Subtitle2"
+            android:layout_marginBottom="16dp"/>
+
+        <ImageView
+            android:id="@+id/pager_priority_level"
+            android:layout_width="150dp"
+            android:layout_height="150dp"
+            android:contentDescription="@string/priority_level"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            android:src="@drawable/ic_priority_high"/>
+
+        <TextView
+            android:id="@+id/pager_tv_minutes"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="fill_vertical"
+            android:textSize="36sp"
+            android:textColor="@color/white"
+            android:textAppearance="@style/TextAppearance.MaterialComponents.Subtitle2"
+            android:textStyle="bold"
+            android:text="20"
+            app:layout_constraintBottom_toBottomOf="@+id/pager_priority_level"
+            app:layout_constraintEnd_toEndOf="@+id/pager_priority_level"
+            app:layout_constraintStart_toStartOf="@+id/pager_priority_level"
+            app:layout_constraintTop_toTopOf="@+id/pager_priority_level"
+            app:layout_constraintVertical_bias="0.36"
+            />
+        
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:gravity="fill_vertical"
+            android:textSize="18sp"
+            android:text="@string/minutes"
+            android:textColor="@color/white"
+            app:layout_constraintEnd_toEndOf="@+id/pager_tv_minutes"
+            app:layout_constraintStart_toStartOf="@+id/pager_tv_minutes"
+            app:layout_constraintTop_toBottomOf="@+id/pager_tv_minutes"
+            android:textAppearance="@style/TextAppearance.MaterialComponents.Subtitle2"
+            />
+
+        <Button
+            android:id="@+id/btn_open_count_down"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/open_count_down"
+            android:layout_marginTop="16dp"
+            android:layout_marginBottom="32dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/pager_priority_level"
+            />
     </androidx.constraintlayout.widget.ConstraintLayout>
 
 </com.google.android.material.card.MaterialCardView>
