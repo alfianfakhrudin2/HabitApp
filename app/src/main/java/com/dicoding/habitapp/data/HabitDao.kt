@@ -8,21 +8,22 @@ import androidx.sqlite.db.SupportSQLiteQuery
 //TODO 2 : Define data access object (DAO)
 @Dao
 interface HabitDao {
-    @RawQuery(observedEntities = [Habit::class])
+
+    @RawQuery(observedEntities = arrayOf(Habit::class))
     fun getHabits(query: SupportSQLiteQuery): DataSource.Factory<Int, Habit>
 
-    @Query("SELECT * FROM habits WHERE id = :habitId")
+    @Query("select * from habits where habits.id = :habitId")
     fun getHabitById(habitId: Int): LiveData<Habit>
 
-    @Insert(onConflict = OnConflictStrategy.REPLACE)
+    @Insert
     fun insertHabit(habit: Habit): Long
 
-    @Insert(onConflict = OnConflictStrategy.REPLACE)
+    @Insert
     fun insertAll(vararg habits: Habit)
 
     @Delete
     fun deleteHabit(habits: Habit)
 
-    @Query("SELECT * FROM habits WHERE priorityLevel = :level ORDER BY RANDOM() LIMIT 1")
+    @Query("select * from habits where habits.priorityLevel = :level order by random() limit 1")
     fun getRandomHabitByPriorityLevel(level: String): LiveData<Habit>
 }
