@@ -33,7 +33,6 @@ class NotificationWorker(val ctx: Context, params: WorkerParameters) : Worker(ct
                 showAlarmNotification(ctx, habitId, habitTitle)
             }
         }
-
         return Result.success()
     }
 

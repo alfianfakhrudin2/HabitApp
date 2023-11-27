@@ -52,11 +52,6 @@ class RandomHabitAdapter(
             tvTitle.text = pageData.title
             tvStartTime.text = pageData.startTime
             tvCountTime.text = pageData.minutesFocus.toString()
-//            when (pageType) {
-//                PageType.HIGH -> tvPriorityLevel.setImageResource(R.drawable.ic_priority_high)
-//                PageType.MEDIUM -> tvPriorityLevel.setImageResource(R.drawable.ic_priority_medium)
-//                PageType.LOW -> tvPriorityLevel.setImageResource(R.drawable.ic_priority_low)
-//            }
 
             if(pageType == PageType.HIGH) tvPriorityLevel.setImageResource(R.drawable.ic_priority_high)
             else if(pageType == PageType.LOW) tvPriorityLevel.setImageResource(R.drawable.ic_priority_low)
