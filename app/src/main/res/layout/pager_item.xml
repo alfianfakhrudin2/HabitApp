@@ -27,8 +27,7 @@
             android:gravity="center"
             tools:text="@string/title_hint"
             app:layout_constraintVertical_bias="1.0"
-            app:layout_constraintBottom_toTopOf="@+id/pager_tv_start_time"
-            />
+            app:layout_constraintBottom_toTopOf="@+id/pager_tv_start_time" />
 
         <TextView
             android:id="@+id/pager_tv_start_time"
@@ -67,8 +66,7 @@
             app:layout_constraintEnd_toEndOf="@+id/pager_priority_level"
             app:layout_constraintStart_toStartOf="@+id/pager_priority_level"
             app:layout_constraintTop_toTopOf="@+id/pager_priority_level"
-            app:layout_constraintVertical_bias="0.36"
-            />
+            app:layout_constraintVertical_bias="0.36" />
         
         <TextView
             android:layout_width="wrap_content"
@@ -80,8 +78,7 @@
             app:layout_constraintEnd_toEndOf="@+id/pager_tv_minutes"
             app:layout_constraintStart_toStartOf="@+id/pager_tv_minutes"
             app:layout_constraintTop_toBottomOf="@+id/pager_tv_minutes"
-            android:textAppearance="@style/TextAppearance.MaterialComponents.Subtitle2"
-            />
+            android:textAppearance="@style/TextAppearance.MaterialComponents.Subtitle2" />
 
         <Button
             android:id="@+id/btn_open_count_down"
@@ -93,8 +90,7 @@
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/pager_priority_level"
-            />
+            app:layout_constraintTop_toBottomOf="@+id/pager_priority_level" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 
 </com.google.android.material.card.MaterialCardView>
